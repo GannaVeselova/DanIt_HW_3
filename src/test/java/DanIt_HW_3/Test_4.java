@@ -1,6 +1,6 @@
 package DanIt_HW_3;
 
-import junit.framework.Assert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,8 +18,6 @@ public class Test_4 {
 
         WebElement catalogButten = driver.findElement(By.cssSelector("[data-testid='fat_menu_btn']"));
         catalogButten.click();
-        sleep(5000);
-        List<WebElement> catalogMenu = driver.findElements(By.cssSelector("[class='layout-content d-flex']"));
         sleep(5000);
 
         driver.quit();
