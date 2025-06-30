@@ -1,4 +1,4 @@
-package DanIt_HW_5;
+package DanIt_HW_7;
 
 import junit.framework.Assert;
 import org.openqa.selenium.By;

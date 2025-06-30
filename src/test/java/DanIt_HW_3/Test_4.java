@@ -1,12 +1,13 @@
 package DanIt_HW_3;
 
 
+import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.List;
+
 
 import static java.lang.Thread.sleep;
 
@@ -19,6 +20,7 @@ public class Test_4 {
         WebElement catalogButten = driver.findElement(By.cssSelector("[data-testid='fat_menu_btn']"));
         catalogButten.click();
         sleep(5000);
+        Assert.assertTrue(catalogButten.isDisplayed());
 
         driver.quit();
     }

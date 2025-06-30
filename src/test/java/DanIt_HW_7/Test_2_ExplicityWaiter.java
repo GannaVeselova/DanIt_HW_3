@@ -1,4 +1,4 @@
-package DanIt_HW_5;
+package DanIt_HW_7;
 
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -24,10 +25,15 @@ public class Test_2_ExplicityWaiter {
         List<WebElement> webElementsAge = driver.findElements(By.cssSelector("ul[class='iSelOpWr ovUlWr unAc ac']"));
         Assert.assertTrue(webElementsAge.get(0).isDisplayed());
 
-        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[text()='2-3 роки']")));
-        WebElement webElementAgeSecondThirdButton = driver.findElement(By.xpath("//li[text()='2-3 роки']"));
+        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), '2-3 роки')]")));
+        WebElement webElementAgeSecondThirdButton = driver.findElement(By.xpath("//li[contains(text(), '2-3 роки')]"));
         webElementAgeSecondThirdButton.click();
 
+        WebElement applyButton = driver.findElement(By.cssSelector("[class='p11']"));
+        applyButton.click();
+        WebElement searchName = driver.findElement(By.xpath("//div[@class='fJbAc order-1']"));
+        String chekNameSearch = searchName.getText();
+        Assert.assertEquals("Пошук",chekNameSearch);
         driver.quit();
     }
 }

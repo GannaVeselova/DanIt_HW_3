@@ -1,12 +1,12 @@
 package DanIt_HW_4;
 
 
+import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -19,10 +19,7 @@ public class Test_4 {
         WebElement turnOffLight = driver.findElement(By.xpath("//span[@class='toggle__button toggle__button--left']"));
         turnOffLight.click();
         sleep(3000);
-        List<WebElement> elements = driver.findElements(By.xpath("//div[@id='autosuggest-autosuggest__results']"));
-        int size = elements.size();
-
-        System.out.println(size);
+        Assert.assertTrue(turnOffLight.isDisplayed());
         sleep(3000);
         driver.quit();
     }
