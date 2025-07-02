@@ -16,7 +16,7 @@ public class Test_2_ExplicityWaiter {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://bi.ua/");
-        WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(5));
         waiter.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Вік']")));
         WebElement webElementAgeButton = driver.findElement(By.xpath("//span[text()='Вік']"));
         webElementAgeButton.click();
@@ -26,14 +26,14 @@ public class Test_2_ExplicityWaiter {
         Assert.assertTrue(webElementsAge.get(0).isDisplayed());
 
         waiter.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(), '2-3 роки')]")));
-        WebElement webElementAgeSecondThirdButton = driver.findElement(By.xpath("//li[contains(text(), '2-3 роки')]"));
-        webElementAgeSecondThirdButton.click();
+        WebElement elementListAgeButton = driver.findElement(By.xpath("//li[contains(text(), '2-3 роки')]"));
+        elementListAgeButton.click();
 
         WebElement applyButton = driver.findElement(By.cssSelector("[class='p11']"));
         applyButton.click();
         WebElement searchName = driver.findElement(By.xpath("//div[@class='fJbAc order-1']"));
         String chekNameSearch = searchName.getText();
-        Assert.assertEquals("Пошук",chekNameSearch);
+        Assert.assertEquals("Пошук", chekNameSearch);
         driver.quit();
     }
 }

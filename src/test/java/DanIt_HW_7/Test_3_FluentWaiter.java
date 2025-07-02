@@ -1,5 +1,6 @@
 package DanIt_HW_7;
 
+import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,8 +18,8 @@ public class Test_3_FluentWaiter {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://bi.ua/");
-        String nameProduct = "Лялька";
-        int first = 0;
+        String keyWordToFind = "Лялька";
+        int firstNumberCatalog = 0;
         FluentWait<WebDriver> fluentWaiter = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofSeconds(2))
@@ -26,16 +27,19 @@ public class Test_3_FluentWaiter {
 
         fluentWaiter.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='search']")));
         WebElement searchName = driver.findElement(By.cssSelector("[name='search']"));
-        searchName.sendKeys(nameProduct);
+        searchName.sendKeys(keyWordToFind);
 
         fluentWaiter.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='btn40 bgBaseP b']")));
         WebElement searchButton = driver.findElement(By.cssSelector("[class='btn40 bgBaseP b']"));
         searchButton.click();
 
-        List<WebElement> catalog = driver.findElements(xpath("//div[@class='col-8 col-lg-9']"));
-        WebElement firstDoll = catalog.get(first);
-        String firstNameDoll = firstDoll.findElement(By.cssSelector("[class='itemDes']")).getText();
-        System.out.println(firstNameDoll);
+        fluentWaiter.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//a[@class='goodsItemLink good']"), 24));
+        List<WebElement> catalog = driver.findElements(xpath("//a[@class='goodsItemLink good']"));
+
+        WebElement firstDoll = catalog.get(firstNumberCatalog);
+        firstDoll.click();
+        WebElement firstNameDoll = driver.findElement(By.cssSelector("h1[class='h1']"));
+        Assert.assertTrue(firstNameDoll.isDisplayed());
 
         driver.quit();
     }
