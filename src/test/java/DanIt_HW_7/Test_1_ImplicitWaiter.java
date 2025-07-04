@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.time.Duration;
 
 
@@ -13,11 +14,11 @@ public class Test_1_ImplicitWaiter {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://bi.ua/");
-        String sendElement = "LEGO";
+        String keyWordToFind = "LEGO";
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-        WebElement searchfield = driver.findElement(By.cssSelector("input[class='iIco']"));
-        searchfield.sendKeys(sendElement);
+        WebElement searchField = driver.findElement(By.cssSelector("input[class='iIco']"));
+        searchField.sendKeys(keyWordToFind);
 
         WebElement searchButton = driver.findElement(By.cssSelector("input[class='btn40 bgBaseP b']"));
         searchButton.click();

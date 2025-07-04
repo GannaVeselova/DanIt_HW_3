@@ -19,7 +19,9 @@ public class Test_4 {
         WebElement turnOffLight = driver.findElement(By.xpath("//span[@class='toggle__button toggle__button--left']"));
         turnOffLight.click();
         sleep(3000);
-        Assert.assertTrue(turnOffLight.isDisplayed());
+        WebElement turnOffNight = driver.findElement(By.xpath("//span[@class='toggle__button toggle__button--right']"));
+
+        Assert.assertTrue(turnOffNight.isDisplayed());
         sleep(3000);
         driver.quit();
     }

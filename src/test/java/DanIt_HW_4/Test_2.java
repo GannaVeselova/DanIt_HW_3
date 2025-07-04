@@ -8,31 +8,26 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import static java.lang.Thread.sleep;
 
+
 public class Test_2 {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
-        try {
-            driver.get("https://ext.com.ua/");
-            driver.manage().window().maximize();
-            String KeyWordToFind = "Олива";
-            WebElement searchField = driver.findElement(By.cssSelector("[class='search__input']"));
-            searchField.sendKeys(KeyWordToFind);
 
-            WebElement searchButton = driver.findElement(By.cssSelector("[class='search__button']"));
-            searchButton.click();
-            sleep(5000);
+        driver.get("https://www.foxtrot.com.ua/");
+        driver.manage().window().maximize();
+        String keyWordToFind = "холодильники";
+        WebElement searchField = driver.findElement(By.cssSelector("input[class='header-search__field evinent-search-input']"));
+        searchField.sendKeys(keyWordToFind);
 
-            WebElement oilElement = driver.findElement(By.cssSelector("[id='j-catalog-header']"));
-            sleep(7000);
-            String oilElementName = oilElement.getText();
-            Assert.assertTrue("Title doesn't contains;" + KeyWordToFind,
-                    oilElementName.contains(KeyWordToFind));
+        WebElement searchButton = driver.findElement(By.cssSelector("input[class='header-search__button evinent-search-button']"));
+        searchButton.click();
+        sleep(5000);
 
-        } catch (AssertionError ex) {
-            ex.printStackTrace();
-        } finally {
-            driver.quit();
-        }
-
+        WebElement findPageProduct = driver.findElement(By.cssSelector("[class='page__title']"));
+        sleep(7000);
+        Assert.assertTrue(findPageProduct.isDisplayed());
+        driver.quit();
     }
+
 }
+

@@ -20,11 +20,13 @@ public class Tast_1 {
         WebElement textCart = driver.findElement(By.cssSelector("[class='modal-layout']"));
         String text = textCart.getText();
         sleep(3000);
-        Assert.assertTrue(keyWordToFind, text.contains(keyWordToFind));
+        Assert.assertEquals(keyWordToFind, text);
         WebElement cartWindowClose = driver.findElement(By.cssSelector("[class='btn button button--icon']"));
         sleep(3000);
         cartWindowClose.click();
         sleep(3000);
+        Assert.assertFalse(textCart.isDisplayed());
+
         driver.quit();
     }
 }
