@@ -4,7 +4,7 @@
 <suite name="All Tests" verbose="1">
     <test name="All Tests">
         <classes>
-            <class name="HW_7.TestWithData_provider">
+            <class name="HW_7.TestWithDataProvider">
             </class>
             <class name="HW_7.PositiveTest">
             </class>
