@@ -10,7 +10,7 @@ import java.time.Duration;
 public class BaseTest {
     private WebDriver driver;
 
-    private static String BASE_URL = "https://hotline.ua/";
+    private static final String BASE_URL = "https://hotline.ua/";
     @BeforeMethod
     public void driverInit() {
         driver = new ChromeDriver();

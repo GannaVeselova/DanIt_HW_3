@@ -18,7 +18,7 @@ import static java.lang.Thread.sleep;
 
 
 @Listeners(Listener.class)
-public class TestWithData_provider extends BaseTest {
+public class TestWithDataProvider extends BaseTest {
 
     @Test(dataProvider = "getSearchData", dataProviderClass = SearchTestData.class)
     public void verifyTitleWithTitleProductPage(String wordToSearch, String expectedTitle) throws InterruptedException {
